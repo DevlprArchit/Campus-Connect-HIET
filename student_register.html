@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration - CampusConnect HIET</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      overflow: hidden;
+    }
+
+    /* Floating graphics (bubbles) */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 8s infinite ease-in-out;
+    }
+    .circle:nth-child(1) {
+      width: 150px; height: 150px;
+      background: #ff9a9e;
+      top: 10%; left: 5%;
+      animation-delay: 0s;
+    }
+    .circle:nth-child(2) {
+      width: 100px; height: 100px;
+      background: #fad0c4;
+      bottom: 15%; right: 10%;
+      animation-delay: 2s;
+    }
+    .circle:nth-child(3) {
+      width: 200px; height: 200px;
+      background: #fbc2eb;
+      top: 40%; right: 20%;
+      animation-delay: 4s;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    /* Glassmorphism card */
+    .card {
+      width: 450px;
+      padding: 2rem;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: white;
+      box-shadow: 0px 8px 30px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    .card h3 {
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      font-weight: 500;
+    }
+    .form-control::placeholder {
+      color: #ddd;
+    }
+    .form-control:focus {
+      background: rgba(255,255,255,0.3);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+      border: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .motto {
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 1rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background graphics -->
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+
+  <!-- Registration Card -->
+  <div class="card">
+    <h3 class="text-center">🎓 Student Registration</h3>
+    <input type="text" id="name" class="form-control mb-2" placeholder="Full Name">
+    <input type="date" id="dob" class="form-control mb-2" placeholder="Date of Birth">
+    <input type="text" id="branch" class="form-control mb-2" placeholder="Branch">
+    <input type="text" id="year" class="form-control mb-2" placeholder="Year">
+    <input type="text" id="regNo" class="form-control mb-2" placeholder="Registration No.">
+    <input type="password" id="password" class="form-control mb-3" placeholder="Password">
+    <button class="btn btn-primary w-100" onclick="registerStudent()">Register</button>
+    <div class="motto">"Unlock your future with knowledge."</div>
+  </div>
+
+  <script>
+    function registerStudent() {
+      let name = document.getElementById("name").value.trim();
+      let dob = document.getElementById("dob").value.trim();
+      let branch = document.getElementById("branch").value.trim();
+      let year = document.getElementById("year").value.trim();
+      let regNo = document.getElementById("regNo").value.trim();
+      let password = document.getElementById("password").value.trim();
+
+      if (!name || !dob || !branch || !year || !regNo || !password) {
+        alert("⚠️ Please fill all fields.");
+        return;
+      }
+
+      let students = JSON.parse(localStorage.getItem("students")) || [];
+      if (students.some(s => s.regNo === regNo)) {
+        alert("⚠️ Student already registered.");
+        return;
+      }
+
+      students.push({ name, dob, branch, year, regNo, password });
+      localStorage.setItem("students", JSON.stringify(students));
+      alert("✅ Registration successful! Please login.");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

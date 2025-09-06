@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teacher Dashboard | CampusConnect-HIET</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+  <a class="navbar-brand fw-bold" href="#">CampusConnect-HIET</a>
+  <div class="ms-auto">
+    <button class="btn btn-danger btn-sm" onclick="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="container my-4">
+  <h2 class="fw-bold mb-3">👨‍🏫 Welcome, Teacher!</h2>
+
+  <!-- Notifications -->
+  <div class="mb-4">
+    <h4 class="mb-3">🔔 Teacher Notifications</h4>
+    <div class="card p-3 shadow-sm mb-2">
+      <h6 class="fw-bold">Staff Meeting</h6>
+      <p class="mb-0">All faculty meeting at 11 AM on 30th August in Seminar Hall.</p>
+    </div>
+    <div class="card p-3 shadow-sm">
+      <h6 class="fw-bold">Internal Marks Upload</h6>
+      <p class="mb-0">Deadline to update marks is 3rd September.</p>
+    </div>
+  </div>
+
+  <!-- Attendance Update -->
+  <div class="mb-4">
+    <h4 class="mb-3">✅ Update Attendance</h4>
+    <form class="row g-3">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Student Reg. No">
+      </div>
+      <div class="col-md-6">
+        <select class="form-select">
+          <option>Present</option>
+          <option>Absent</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <button type="button" class="btn btn-primary">Update</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Gallery -->
+  <div class="mb-4">
+    <h4 class="mb-3">📸 Campus Gallery</h4>
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <img src="https://picsum.photos/400/300?random=4" class="img-fluid rounded shadow-sm" alt="Campus photo">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://picsum.photos/400/300?random=5" class="img-fluid rounded shadow-sm" alt="Campus photo">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://picsum.photos/400/300?random=6" class="img-fluid rounded shadow-sm" alt="Campus photo">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://picsum.photos/400/300?random=7" class="img-fluid rounded shadow-sm" alt="Campus photo">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+<script>
+function logout() {
+  alert("Logged out!");
+  window.location.href = "index.html";
+}
+</script>
+</body>
+</html>

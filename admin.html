@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Portal | CampusConnect-HIET</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .glass-card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      padding: 30px;
+      color: #fff;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+    .glass-card h2 { font-weight: 700; margin-bottom: 20px; }
+    .form-control {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+    }
+    .form-control::placeholder { color: rgba(255,255,255,0.7); }
+    .btn-primary {
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border: none;
+      font-weight: 600;
+    }
+    .dashboard {
+      display: none;
+      max-width: 1100px;
+      width: 95%;
+    }
+    .dashboard h3 {
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .notif-card {
+      background: rgba(255,255,255,0.15);
+      padding: 15px;
+      border-radius: 12px;
+      color: #fff;
+    }
+    .logout-btn {
+      background: linear-gradient(90deg, #f85032, #e73827);
+      border: none;
+      color: #fff;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN CARD -->
+<div class="glass-card" id="loginBox">
+  <h2>🎓 Admin Login</h2>
+  <input type="text" id="username" class="form-control mb-3" placeholder="Username">
+  <input type="password" id="password" class="form-control mb-3" placeholder="Password">
+  <button class="btn btn-primary w-100" id="loginBtn">Login</button>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="adminDashboard">
+  <div class="glass-card mb-4">
+    <h2>🛠 Admin Dashboard</h2>
+    <p class="text-light">Manage notifications & announcements here.</p>
+    <button class="btn logout-btn w-100 mt-2" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-5">
+      <div class="glass-card">
+        <h5>➕ Add Notification</h5>
+        <input type="text" id="aTitle" class="form-control mb-2" placeholder="Title">
+        <input type="text" id="aText" class="form-control mb-2" placeholder="Message">
+        <select id="aBadge" class="form-select mb-2">
+          <option value="primary">General</option>
+          <option value="success">Event</option>
+          <option value="warning">Reminder</option>
+          <option value="danger">Alert</option>
+        </select>
+        <button class="btn btn-primary w-100" id="btnAdminAdd">Add</button>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="glass-card">
+        <h5>🗂 Current Notifications</h5>
+        <div id="adminNotifList" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const loginBox = document.getElementById("loginBox");
+  const dashboard = document.getElementById("adminDashboard");
+
+  // Check login on load
+  document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("loggedInAdmin") === "true") {
+      showDashboard();
+    }
+  });
+
+  // Login function
+  document.getElementById("loginBtn").addEventListener("click", () => {
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
+
+    if (user === "admin" && pass === "1234") {
+      localStorage.setItem("loggedInAdmin", "true");
+      showDashboard();
+    } else {
+      alert("Invalid credentials! Try: admin / 1234");
+    }
+  });
+
+  function showDashboard() {
+    loginBox.style.display = "none";
+    dashboard.style.display = "block";
+    renderNotifications();
+  }
+
+  function logout() {
+    localStorage.removeItem("loggedInAdmin");
+    location.reload();
+  }
+
+  // Notifications
+  const notifList = document.getElementById("adminNotifList");
+  const btnAdminAdd = document.getElementById("btnAdminAdd");
+
+  btnAdminAdd.addEventListener("click", () => {
+    const title = document.getElementById("aTitle").value;
+    const text = document.getElementById("aText").value;
+    const badge = document.getElementById("aBadge").value;
+
+    if (title && text) {
+      const notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+      notifications.push({ title, text, badge });
+      localStorage.setItem("notifications", JSON.stringify(notifications));
+      renderNotifications();
+      document.getElementById("aTitle").value = "";
+      document.getElementById("aText").value = "";
+    }
+  });
+
+  function renderNotifications() {
+    const notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+    notifList.innerHTML = "";
+    notifications.forEach((n, index) => {
+      notifList.innerHTML += `
+        <div class="notif-card mb-2">
+          <h6>${n.title} <span class="badge bg-${n.badge}">${n.badge}</span></h6>
+          <p class="mb-1">${n.text}</p>
+          <button class="btn btn-sm btn-danger" onclick="removeNotif(${index})">Remove</button>
+        </div>`;
+    });
+  }
+
+  function removeNotif(index) {
+    let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+    notifications.splice(index, 1);
+    localStorage.setItem("notifications", JSON.stringify(notifications));
+    renderNotifications();
+  }
+</script>
+
+</body>
+</html>

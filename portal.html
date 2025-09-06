@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Connect-HIET | College Portal</title>
+  <link rel="icon" href="hietlogo.png" type="image/png" />
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!--Style-->
+  <link href="portal/Pstyle.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container-fluid">
+    <!-- Logo -->
+<a class="navbar-brand d-flex align-items-center" href="#">
+  <div class="logo-circle d-flex align-items-center justify-content-center me-2">
+    <img src="hietlogo-removebg-preview.png" alt="HIET Logo" width="30">
+  </div> Campus Connect-HIET</a>
+
+    <!-- Navbar Toggler (Mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Left side links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#departments">Departments</a></li>
+        <li class="nav-item"><a class="nav-link" href="#placements">Placements</a></li>
+        <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Right side login -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="btn btn-outline-light dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown">
+            Login
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loginDropdown">
+            <li><a class="dropdown-item" href="#">Student Login</a></li>
+            <li><a class="dropdown-item" href="#">Faculty Login</a></li>
+            <li><a class="dropdown-item" href="#">Admin Login</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- HERO -->
+  <header class="hero-wrap" id="home" aria-label="Hero">
+    <span class="shape s1" aria-hidden="true"></span>
+    <span class="shape s2" aria-hidden="true"></span>
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <div class="glass p-4 p-md-5">
+            <span class="badge text-bg-light text-dark mb-2">Official College Portal</span>
+            <h1 class="display-5 fw-bold mb-3">Empowering Students, <br>Connecting Campus.</h1>
+            <p class="lead mb-4">Explore admissions, departments, placements, notices, and more — all in one modern, responsive portal.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="#admissions" class="btn btn-light fw-semibold"><i class="bi bi-journal-check me-1"></i> Admissions</a>
+              <a href="#notices" class="btn btn-outline-light fw-semibold"><i class="bi bi-megaphone me-1"></i> Notices</a>
+              <a href="index.html" class="btn btn-outline-light fw-semibold"><i class="bi bi-box-arrow-in-right me-1"></i> Portal Login</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="glass text-center p-4 p-md-5">
+            <img src="portal/Hiet-College-logo--300x102" alt="Campus" width="180" class="mb-3">
+            <h5 class="mb-2">Quick Stats</h5>
+            <div class="row text-center g-3">
+              <div class="col-4"><div class="stat fs-5 fw-bold" data-count="1800">0</div><div class="stat-label small">Students</div></div>
+              <div class="col-4"><div class="stat fs-5 fw-bold" data-count="50">0</div><div class="stat-label small">Faculty</div></div>
+              <div class="col-4"><div class="stat fs-5 fw-bold" data-count="8">0</div><div class="stat-label small">Programs</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+  <!-- ABOUT + TICKER -->
+  <section id="about">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <h2 class="section-title mb-3">About the Institute</h2>
+          <p class="mb-3">HIET GROUP OF INSTITUTIONS is located in Village Shahpur in Kangra district of Himachal Pradesh. The institution was established in 2010 by Dhalaudhar Education Society. Institution is surrounded by breathtaking beauty of Dhauladhar Range which adds to the lush green and beautiful campus making it most conducive for studies. It proposes to encourage active interaction of the students with industry and a mission to serve the society.</p>
+          <div class="row g-2">
+            <div class="col-6 col-md-4"><span class="badge rounded-pill text-bg-primary">AICTE Approved</span></div>
+            <div class="col-6 col-md-4"><span class="badge rounded-pill text-bg-success">Industry Tie-ups</span></div>
+            <div class="col-6 col-md-4"><span class="badge rounded-pill text-bg-warning">Skill Labs</span></div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="glass p-3">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-bell-fill"></i> <strong>Latest Notices</strong>
+              <span class="badge ms-auto" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3)">Live</span>
+            </div>
+            <div class="ticker">
+              <ul id="noticeList">
+                <li><i class="bi bi-dot"></i> Spot Round Counselling: M.Pharmacy</li>
+                <li><i class="bi bi-dot"></i> Academic Calendar Session 2025–26</li>
+                <li><i class="bi bi-dot"></i> Submit RTI / Grievance via portal</li>
+                <li><i class="bi bi-dot"></i> New tender: Lab equipment supply</li>
+                <li><i class="bi bi-dot"></i> NCC / NSS enrollment open</li>
+                <li><i class="bi bi-dot"></i> Scholarship application window open</li>
+              </ul>
+            </div>
+            <div class="text-end mt-3">
+              <a href="#" class="btn btn-light btn-sm">See More Notices <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPARTMENTS -->
+  <section id="departments" class="bg-light-subtle">
+    <div class="container">
+      <h2 class="section-title mb-4">Departments</h2>
+      <div class="row g-4">
+        <!-- Keeping your images/labels exactly as provided -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/Btech.jpg" alt="BTECH">
+            <div class="card-body">
+              <h5 class="card-title">B-TECH</h5>
+              <p class="card-text">AI/ML, Cloud, Full-stack labs, coding clubs and hackathons.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/Polytechnic.jpg" alt="POLY">
+            <div class="card-body">
+              <h5 class="card-title">POLYTECHNIC</h5>
+              <p class="card-text">IoT, Embedded systems, VLSI and robotics-focused curriculum.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+         <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/LAW.jpg" alt="BA/LLB">
+            <div class="card-body">
+              <h5 class="card-title">BA-LLB</h5>
+              <p class="card-text">Strong foundation in mathematics, physics, chemistry and English.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+
+          <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/BHM.jpg" alt="BHM">
+            <div class="card-body">
+              <h5 class="card-title">BHM</h5>
+              <p class="card-text">Strong foundation in mathematics, physics, chemistry and English.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/VET.jpg" alt="VET">
+            <div class="card-body">
+              <h5 class="card-title">Veterinary Pharmacist Diploma</h5>
+              <p class="card-text">CNC, CAD/CAM, 3D printing labs and industry internships.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/NIOS" alt="NIOS">
+            <div class="card-body">
+              <h5 class="card-title">NIOS</h5>
+              <p class="card-text">Strong foundation in mathematics, physics, chemistry and English.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+         <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/BCA" alt="BCA">
+            <div class="card-body">
+              <h5 class="card-title">BCA</h5>
+              <p class="card-text">Strong foundation in mathematics, physics, chemistry and English.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/BBA" alt="BBA">
+            <div class="card-body">
+              <h5 class="card-title">BBA</h5>
+              <p class="card-text">Strong foundation in mathematics, physics, chemistry and English.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMISSIONS -->
+  <section id="admissions">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="section-title mb-3">Admissions</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="bi bi-1-circle me-2 text-primary"></i>Check eligibility & program details</li>
+            <li class="list-group-item"><i class="bi bi-2-circle me-2 text-primary"></i>Fill application form online</li>
+            <li class="list-group-item"><i class="bi bi-3-circle me-2 text-primary"></i>Upload documents</li>
+            <li class="list-group-item"><i class="bi bi-4-circle me-2 text-primary"></i>Pay application fee</li>
+            <li class="list-group-item"><i class="bi bi-5-circle me-2 text-primary"></i>Merit list & counseling</li>
+          </ul>
+          <a href="student_register.html" class="btn btn-primary mt-3"><i class="bi bi-pencil-square me-1"></i> Apply Now</a>
+        </div>
+        <div class="col-lg-6">
+          <div class="glass p-4">
+            <h5 class="mb-3">Important Dates</h5>
+            <div class="row g-3">
+              <div class="col-6"><div class="p-3 glass text-center rounded">Applications Open <div class="fw-bold">Aug 20</div></div></div>
+              <div class="col-6"><div class="p-3 glass text-center rounded">Last Date <div class="fw-bold">Sept 10</div></div></div>
+              <div class="col-6"><div class="p-3 glass text-center rounded">Merit List <div class="fw-bold">Sept 15</div></div></div>
+              <div class="col-6"><div class="p-3 glass text-center rounded">Orientation <div class="fw-bold">Oct 05</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICES -->
+  <section id="notices" class="bg-light-subtle">
+    <div class="container">
+      <h2 class="section-title mb-4">Notices & Tenders</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <div class="card-body">
+              <h5 class="card-title">Academic Calendar 2025</h5>
+              <p class="card-text">Download the detailed academic calendar for the current session.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Download PDF</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <div class="card-body">
+              <h5 class="card-title">Hostel Allotment Phase II</h5>
+              <p class="card-text">List of students allotted rooms in Phase II.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">View List</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 h-card">
+            <div class="card-body">
+              <h5 class="card-title">E-Tender: Lab Equipment</h5>
+              <p class="card-text">Inviting bids for supply of electronics & mechanical lab equipment.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">View Tender</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-end mt-3"><a href="#" class="btn btn-link">See all notices <i class="bi bi-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <!-- PLACEMENTS -->
+  <section id="placements">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-5">
+          <h2 class="section-title mb-2">Placements</h2>
+          <p>Our Training & Placement Cell works closely with industry partners to ensure strong internship and placement outcomes.</p>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Average CTC: <strong>₹5.6 LPA</strong></li>
+            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Highest CTC: <strong>₹18 LPA</strong></li>
+            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Top Recruiters every year</li>
+          </ul>
+          <a href="#" class="btn btn-outline-primary">Placement Brochure</a>
+        </div>
+        <div class="col-lg-7">
+          <div class="glass p-3">
+            <div class="strip" style="white-space:nowrap; overflow:hidden;">
+              <div class="strip-inner" style="display:inline-block; animation: marquee 22s linear infinite;">
+               <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/L%26T_TS_Logo.jpg" alt="L&T" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/TCS_Logo.jpg" alt="TCS" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/HCLTech-new-logo.svg/128px-HCLTech-new-logo.svg.png?20220926142743" alt="HCLTech new logo" >
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" alt="Wipro" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Accenture_logo.svg" alt="Accenture" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg" alt="Capgemini" style="height:48px;margin:0 26px;">
+                <!-- duplicate for seamless loop -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/L%26T_TS_Logo.jpg" alt="L&T" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/TCS_Logo.jpg" alt="TCS" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/HCLTech-new-logo.svg/128px-HCLTech-new-logo.svg.png?20220926142743" alt="HCLTech new logo" >
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" alt="Wipro" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Accenture_logo.svg" alt="Accenture" style="height:48px;margin:0 26px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg" alt="Capgemini" style="height:48px;margin:0 26px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
+  </section>
+
+  <!-- FACILITIES -->
+  <section id="facilities" class="bg-light-subtle">
+    <div class="container">
+      <h2 class="section-title mb-4">Facilities</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3"><div class="card h-100 h-card text-center p-3">
+          <i class="bi bi-building fs-1 text-primary"></i><h6 class="mt-3">Smart Classrooms</h6>
+          <p class="small text-muted">AV-enabled rooms for interactive learning.</p></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100 h-card text-center p-3">
+          <i class="bi bi-cpu fs-1 text-primary"></i><h6 class="mt-3">Modern Labs</h6>
+          <p class="small text-muted">State-of-the-art labs across all departments.</p></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100 h-card text-center p-3">
+          <i class="bi bi-book fs-1 text-primary"></i><h6 class="mt-3">Central Library</h6>
+          <p class="small text-muted">Extensive collection & digital resources.</p></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100 h-card text-center p-3">
+          <i class="bi bi-hospital fs-1 text-primary"></i><h6 class="mt-3">Medical & Sports</h6>
+          <p class="small text-muted">On-campus clinic & sports complex.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPAL'S DESK -->
+  <section id="message">
+    <div class="container glass">
+      <div class="row align-items-center p-3 p-md-4">
+        <div class="col-md-4 text-center">
+          <img src="portal/Principal-Dr Arjun.jpg" alt="Principal" class="rounded-circle shadow">
+        </div>
+        <div class="col-md-8 mt-3 mt-md-0">
+          <h3 class="section-title">From the Principal’s Desk</h3>
+          <p>Welcome to HIET. As the Principal, I am proud of our culture of excellence, innovation, and community engagement.
+            We aim to nurture talent, encourage research, and provide world-class opportunities for our students.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN OFFICERS -->
+  <section id="officers">
+    <div class="container glass p-3 p-md-4">
+      <h4 class="section-title text-center mb-3">Administrative Officers</h4>
+      <div class="row g-3 text-center">
+         <div class="col-md-6 col-lg-3">
+          <div class="glass p-3 h-100">
+            <img src="portal/Dean-Dr Naresh.jpg" alt="Dean">
+            <h6 class="mt-2 text">Dr Naresh Sharma</h6>
+            <h6 class="mt-2 text">Dean Academics</h6>
+            <p class="small">Focused on enhancing teaching methodologies and research culture.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="glass p-3 h-100">
+            <img src="portal/Accounts-Sanjeev Rana.jpg" alt="Registrar">
+            <h6 class="mt-2 text">Mr Sanjeev Rana</h6>
+            <h6 class="mt-2 text">Registrar</h6>
+            <p class="small">Committed to maintaining academic records and supporting administration.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="glass p-3 h-100">
+            <img src="portal/Controller Exams-Manjeet Kumar.jpg" alt="Controller Exams">
+            <h6 class="mt-2 text">Mr Manjeet Kumar</h6>
+            <h6 class="mt-2 text">Controller of Exams</h6>
+            <p class="small">Ensuring transparent and efficient examination processesokay.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="glass p-3 h-100">
+            <img src="portal/Cashier-Nageen Bhardwaj.png" alt="Finance Officer">
+            <h6 class="mt-2 text-">Mr Nageen Bhardwaj</h6>
+            <h6 class="mt-2 text-">Finance Officer</h6>
+            <p class="small">Managing institutional finances with accountability and efficiency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="section-title m-0">Events</h2>
+        <a href="#" class="btn btn-outline-primary btn-sm">View Calendar</a>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/Event 4.jpg" alt="Tech Summit">
+            <div class="card-body">
+              <h5 class="card-title">Tech Summit 2025</h5>
+              <p class="card-text">Talks, workshops, and project expo by students.</p>
+              <span class="badge text-bg-primary">Oct 12</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/Event 1.jpg" alt="Cultural Fest">
+            <div class="card-body">
+              <h5 class="card-title">Cultural Fest</h5>
+              <p class="card-text">Painting, dance, drama, and more—inter-college.</p>
+              <span class="badge text-bg-warning">Nov 03–04</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card h-100 h-card">
+            <img src="portal/Event 2.jpg" alt="Sports Meet">
+            <div class="card-body">
+              <h5 class="card-title">Sports Meet</h5>
+              <p class="card-text">Track & field, Cricket, badminton tournaments.</p>
+              <span class="badge text-bg-success">Nov 20–22</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROVALS -->
+  <section id="approvals" class="text-center">
+    <div class="container glass p-3 p-md-4">
+      <h4 class="section-title">Recognised & Approved By</h4>
+      <div class="d-flex flex-wrap justify-content-center gap-4 align-items-center mt-2">
+        <img src="portal/All_India_Council_for_Technical_Education_logo.png" alt="AICTE" width="80">
+       <a href="https://www.aicte.gov.in/"><p class="card-text m-0">AICTE</p></a>
+      </div>
+      <div class="d-flex flex-wrap justify-content-center gap-4 align-items-center mt-2">
+        <img src="portal/Hptu Logo.jpg" alt="HPTU" width="80">
+       <a href="https://www.himtu.ac.in"> <p class="card-text m-0">HPTU</p></a>
+      </div>
+      <div class="d-flex flex-wrap justify-content-center gap-4 align-items-center mt-2">
+        <img src="portal/Himachal_Pradesh_University_logo.png" alt="HPU" width="80">
+        <a href="https://www.hpuniv.ac.in"><p class="card-text m-0">HPU</p></a>
+      </div>
+      <div class="d-flex flex-wrap justify-content-center gap-4 align-items-center mt-2">
+        <img src="portal/Himachal_Pradesh_Takniki_Shiksha_Board_logo.png" alt="HPTSB" width="80">
+          <a href="https://www.hptechboard.com"><p class="card-text m-0">HPTSB</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="bg-light-subtle">
+    <div class="container">
+      <h2 class="section-title mb-4">Campus Gallery</h2>
+      <div class="row g-3 gallery">
+        <!-- Replace with your real images; using placeholders per your original pattern -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <img src="portal/Indrahar-1 (25).webp" alt="Campus 1" data-bs-toggle="modal" data-bs-target="#lightbox" data-src="https://source.unsplash.com/1200x800/?campus,1">
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img src="portal/Indrahar 2 (25).jpg" alt="Campus 2" data-bs-toggle="modal" data-bs-target="#lightbox" data-src="https://source.unsplash.com/1200x800/?campus,2">
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img src="portal/MOU-LT 3 (25)" alt="Campus 3" data-bs-toggle="modal" data-bs-target="#lightbox" data-src="https://source.unsplash.com/1200x800/?campus,3">
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img src="portal/MD-Dushyant Kayastha 4 (24).jpg" alt="Campus 4" data-bs-toggle="modal" data-bs-target="#lightbox" data-src="https://source.unsplash.com/1200x800/?campus,4">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Lightbox Modal -->
+  <div class="modal fade" id="lightbox" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content bg-dark">
+        <div class="modal-body p-0 position-relative">
+          <button type="button" class="btn btn-light position-absolute end-0 m-2" data-bs-dismiss="modal" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+          </button>
+          <img id="lightboxImg" src="" alt="Preview" class="w-100 h-100" style="object-fit:contain;max-height:80vh;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="text-center text-white" style="background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);">
+    <div class="container py-5">
+      <h2 class="fw-bold">Ready to join HIET?</h2>
+      <p class="mb-4">Apply online or explore programs to kickstart your journey.</p>
+      <a href="student_register.html" class="btn btn-light fw-semibold me-2">Apply Now</a>
+      <a href="#departments" class="btn btn-outline-light fw-semibold">Explore Departments</a>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact" class="footer pt-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5>CampusConnect-HIET</h5>
+          <p class="small"><b>(HIET)</b> Himachal Institute of Engineering & Technology (HIET)
+            Vidyanagar, Shahpur, Himachal Pradesh 176223, India</p>
+          <p class="small mb-1"><i class="bi bi-telephone me-1"></i> +91-XXXX-XXX-XXX</p>
+          <p class="small"><i class="bi bi-envelope me-1"></i> info@hiet.edu.in</p>
+        </div>
+
+        <div class="col-lg-4">
+          <h6>Useful Links</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#">RTI Information</a></li>
+            <li><a href="#">Anti-Ragging Cell</a></li>
+            <li><a href="#">Grievance Redressal</a></li>
+            <li><a href="#">Tender Notices</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6>Locate Us</h6>
+          <p class="small"><b>Himachal Institute of Engineering & Technology (HIET)</b>
+            Vidyanagar, Shahpur, Himachal Pradesh 176223, India</p>
+          <div class="ratio ratio-16x9 rounded overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27418.123456789012!2d76.1579041!3d32.2228894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b5ea07e061bcd%3A0xe49b86a49ae84fd4!2sHimachal%20Institute%20of%20Engineering%20%26%20Technology%20(HIET)!5e0!3m2!1sen!2sin!4v0000000000000"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Map: HIET">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center py-3 mt-3 border-top border-secondary">
+        <span class="small">© <span id="year"></span> HIET. All rights reserved.</span>
+        <div class="d-flex gap-3">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Panel -->
+  <div class="chatbot-panel" id="chatbotPanel" aria-live="polite" aria-label="HIET Assistant Chat">
+    <div class="chatbot-header">
+      <span class="dot" aria-hidden="true"></span>
+      <div>
+        <strong>HIET Assistant</strong><br>
+        <small class="text-white-50">Powered by Diet-Coke</small>
+      </div>
+      <button class="btn btn-sm btn-light ms-auto" id="closeChat"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="chatbot-body" id="chatBody">
+      <div class="chat-msg bot">Hi! I can answer campus questions (admissions, notices, facilities, etc.). How can I help?</div>
+    </div>
+    <div class="chatbot-input">
+      <input id="chatInput" type="text" placeholder="Type your message..." aria-label="Message">
+      <button class="btn btn-primary" id="sendBtn"><i class="bi bi-send"></i></button>
+    </div>
+  </div>
+  <button class="chatbot-toggle" id="chatToggle" aria-label="Open HIET Assistant">
+    <i class="bi bi-chat-dots-fill fs-5"></i>
+  </button>
+
+  <!-- Scripts -->
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="pscript.js"></script>
+</body>
+</html>
