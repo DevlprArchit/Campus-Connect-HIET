@@ -1,10 +1,15 @@
-/* ===== BASE ===== */
+/* ========================================================================
+   GLOBAL STYLES & FONT IMPORT
+   ======================================================================== */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
-/* ===== LOGIN PAGE ===== */
+/* ========================================================================
+   LOGIN PAGE STYLES
+   ======================================================================== */
 .login-page {
   background: linear-gradient(135deg, #1e3c72, #2a5298, #4facfe, #00f2fe);
   background-size: 300% 300%;
@@ -13,7 +18,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-x: hidden;
+  overflow: hidden;
   color: #fff;
 }
 
@@ -23,12 +28,15 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== LOGIN CONTAINER ===== */
+/* ========================================================================
+   LOGIN CONTAINER (Smaller size)
+   - Reduced max-width and min-height for a more compact design.
+   ======================================================================== */
 .login-container {
   display: flex;
   width: 90%;
-  max-width: 950px;
-  min-height: 540px;
+  max-width: 750px; /* Reduced from 950px */
+  min-height: 480px; /* Reduced from 540px */
   background: rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   backdrop-filter: blur(14px);
@@ -37,9 +45,10 @@ body {
   overflow: hidden;
 }
 
-/* ===== LEFT PANEL ===== */
+/* ========================================================================
+   LEFT PANEL STYLES
+   ======================================================================== */
 .glass-left {
-  flex: 1;
   background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -54,17 +63,19 @@ body {
 }
 
 .logo {
-  width: 120px;
-  margin-bottom: 25px;
+  width: 100px; /* Slightly smaller logo for the smaller container */
+  margin-bottom: 20px;
   filter: drop-shadow(0 0 8px rgba(0,0,0,0.4));
 }
 
-/* ===== RIGHT PANEL ===== */
+/* ========================================================================
+   RIGHT PANEL STYLES
+   - Reduced padding to fit the smaller container.
+   ======================================================================== */
 .glass-right {
-  flex: 1;
   background: rgba(0,0,0,0.35);
   color: #fff;
-  padding: 50px;
+  padding: 40px; /* Reduced from 50px */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,11 +83,13 @@ body {
 
 .glass-right h3 {
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 25px; /* Reduced from 30px */
   text-align: center;
 }
 
-/* ===== INPUTS ===== */
+/* ========================================================================
+   INPUT & SELECT STYLES
+   ======================================================================== */
 .form-control, .form-select {
   border-radius: 12px;
   border: none;
@@ -90,7 +103,9 @@ body {
 .form-select option { color: #000; }
 .dark-select { background: rgba(0,0,0,0.4); }
 
-/* ===== BUTTONS ===== */
+/* ========================================================================
+   BUTTON STYLES
+   ======================================================================== */
 .btn-gradient {
   background: linear-gradient(90deg, #4facfe, #00f2fe);
   border: none;
@@ -106,14 +121,16 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ========================================================================
+   RESPONSIVE DESIGN
+   ======================================================================== */
 @media (max-width: 768px) {
   .login-container {
     flex-direction: column;
     min-height: auto;
   }
   .glass-left {
-    display: none; /* hide left panel on mobile */
+    display: none;
   }
   .glass-right {
     padding: 30px;
@@ -121,7 +138,9 @@ body {
   }
 }
 
-/* ===== DASHBOARD PAGE ===== */
+/* ========================================================================
+   DASHBOARD PAGE STYLES
+   ======================================================================== */
 .dashboard-body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #667eea, #764ba2, #ff758c);
@@ -130,7 +149,6 @@ body {
   color: #fff;
 }
 
-/* Navbar */
 .glass-nav {
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
@@ -141,7 +159,6 @@ body {
   letter-spacing: 1px;
 }
 
-/* Cards */
 .glass-card {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
@@ -153,29 +170,31 @@ body {
   transform: translateY(-5px);
 }
 
-/* Text gradients */
 .text-gradient {
   background: linear-gradient(45deg, #4facfe, #00f2fe);
- 
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .text-gradient-green {
   background: linear-gradient(45deg, #43e97b, #38f9d7);
-  
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .text-gradient-pink {
   background: linear-gradient(45deg, #ff758c, #ff7eb3);
-
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .text-gradient-blue {
   background: linear-gradient(45deg, #6a11cb, #2575fc);
-  
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Profile */
 .profile-pic {
   width: 90px;
   height: 90px;
@@ -185,18 +204,18 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Tables */
 .table {
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
-.table th {
+.table thead th {
   background-color: #1f1f1f;
   color: #f0f0f0;
 }
 .table td { vertical-align: middle; }
+.table tbody tr:hover { background-color: rgba(255, 255, 255, 0.1); }
 
-/* Buttons */
 .btn-warning {
   background-color: #f39c12;
   border: none;
