@@ -40,8 +40,8 @@
         .login-container {
             display: flex;
             width: 90%;
-            max-width: 200px; /* Reduced for a smaller look */
-            min-height: 100px; /* Reduced for a more compact size */
+            max-width: 500px; /* Reduced for a smaller look */
+            min-height: 300px; /* Reduced for a more compact size */
             background: rgba(255, 255, 255, 0.12);
             border-radius: 20px;
             backdrop-filter: blur(14px);
@@ -118,7 +118,7 @@
         }
         
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 300px) {
+        @media (max-width: 768px) {
             .login-container {
                 flex-direction: column;
                 min-height: auto;
@@ -280,13 +280,13 @@
         <!-- LEFT (Glass Card with Logo & Title) -->
         <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-center glass-left p-5">
             <img src="hietlogo-removebg-preview.png" alt="HIET Logo" class="logo mb-4">
-            <h1 class="display-2 fw-bold">Campus Connect-HIET</h1>
+            <h1 class="display-5 fw-bold">Campus Connect-HIET</h1>
             <p class="lead fst-italic">“Empowering Students, Connecting Campus.”</p>
         </div>
 
         <!-- RIGHT (Login Form) -->
         <div class="col-md-6 d-flex flex-column justify-content-center glass-right p-5">
-            <h3 class="fw-bold mb-2 text-center">Login to your Account</h3>
+            <h3 class="fw-bold mb-4 text-center">Login to your Account</h3>
             
             <div class="mb-3">
                 <input type="text" id="loginId" class="form-control form-control-lg" placeholder="Registration / Employee ID or Email">
@@ -318,7 +318,7 @@
 
 <!-- AI Chatbot UI -->
 <button id="chat-fab" class="chat-fab">
-    🛜
+    ✨
 </button>
 
 <div id="chatbot-container" class="chatbot-container">
@@ -489,5 +489,3 @@
 </script>
 </body>
 </html>
-
-
