@@ -15,7 +15,81 @@
   <link href="portal/Pstyle.css" rel="stylesheet">
 </head>
 <body>
+<style> 
+ body{ font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: linear-gradient(180deg,#e9f0ff 0%, #f8fbff 100%);} 
 
+ .ticker-container {
+    height: 40px; /* one line height */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ticker-vertical {
+    display: flex;
+    flex-direction: column;
+    animation: scroll-step 16s steps(4) infinite;
+  }
+
+  .ticker-vertical span {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 40px;
+    opacity: 0;
+    animation: fade 4s linear infinite;
+  }
+
+  /* Sync fade with scroll */
+  .ticker-vertical span:nth-child(1) { animation-delay: 0s; }
+  .ticker-vertical span:nth-child(2) { animation-delay: 4s; }
+  .ticker-vertical span:nth-child(3) { animation-delay: 8s; }
+  .ticker-vertical span:nth-child(4) { animation-delay: 12s; }
+
+  @keyframes scroll-step {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-160px); } /* 4 × 40px */
+  }
+
+  @keyframes fade {
+    0%, 20%   { opacity: 0; }
+    25%, 75%  { opacity: 1; }
+    80%, 100% { opacity: 0; }
+  }.live-badge {
+    background: red;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    animation: blink 1.2s infinite alternate;
+  }
+
+  @keyframes blink {
+    from { opacity: 1; }
+    to   { opacity: 0.4; }
+  }
+    /* GENERAL GLASS BOX */
+    .glass{ background:var(--glass-bg); border-radius:12px; box-shadow:0 8px 30px rgba(23,33,60,0.06); }
+
+    /* Ensure bootstrap utility text-bg-success doesn't expand full width */
+    h6.text-bg-success { display:inline-block; padding:.25rem .6rem; border-radius:.35rem; color:#fff; background-color:#198754; }
+
+    /* Gallery carousel images */
+    #galleryCarousel .carousel-item { height:420px; }
+    #galleryCarousel .carousel-item img { object-fit:cover; height:100%; width:100%; }
+
+    .gallery-thumbs{ gap:.5rem; }
+    .gallery-thumbs img{ width:100px; height:64px; object-fit:cover; cursor:pointer; border-radius:6px; border:2px solid transparent; }
+    .gallery-thumbs img.active{ border-color:var(--accent); box-shadow:0 6px 18px rgba(13,110,253,.12); }
+
+    /* Alumni */
+    .alumni-card img{ width:84px; height:84px; object-fit:cover; border-radius:50%; }
+
+    /* make small adjustments for mobile */
+    @media (max-width:576px){ #galleryCarousel .carousel-item{ height:260px; } .gallery-thumbs img{ width:70px; height:48px; } }
+
+    /* small helper */
+    .small-muted { color:#6c757d; }
+    </style>
   <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid">
@@ -82,7 +156,7 @@
             <img src="portal/Hiet-College-logo--300x102" alt="Campus" width="180" class="mb-3">
             <h5 class="mb-2">Quick Stats</h5>
             <div class="row text-center g-3">
-              <div class="col-4"><div class="stat fs-5 fw-bold" data-count="1800">0</div><div class="stat-label small">Students</div></div>
+              <div class="col-4"><div class="stat fs-5 fw-bold" data-count="1100">0</div><div class="stat-label small">Students</div></div>
               <div class="col-4"><div class="stat fs-5 fw-bold" data-count="50">0</div><div class="stat-label small">Faculty</div></div>
               <div class="col-4"><div class="stat fs-5 fw-bold" data-count="8">0</div><div class="stat-label small">Programs</div></div>
             </div>
@@ -111,18 +185,23 @@
           <div class="glass p-3">
             <div class="d-flex align-items-center gap-2 mb-2">
               <i class="bi bi-bell-fill"></i> <strong>Latest Notices</strong>
-              <span class="badge ms-auto" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3)"><B>Live</B></span>
+              <span class="badge ms-auto" style="background:red;border:1px solid rgb(148, 133, 133)"><B>Live</B></span>
             </div>
-            <div class="ticker">
-              <ul id="noticeList">
-                <li><i class="bi bi-dot"></i> Spot Round Counselling: M.Pharmacy</li>
-                <li><i class="bi bi-dot"></i> Academic Calendar Session 2025–26</li>
-                <li><i class="bi bi-dot"></i> Submit RTI / Grievance via portal</li>
-                <li><i class="bi bi-dot"></i> New tender: Lab equipment supply</li>
-                <li><i class="bi bi-dot"></i> NCC / NSS enrollment open</li>
-                <li><i class="bi bi-dot"></i> Scholarship application window open</li>
-              </ul>
-            </div>
+            <!-- Notification Ticker -->
+    <div class="ticker-container py-2">
+  <div class="ticker-vertical">
+      <span>📢 Admission Open 2025 - Apply Now!</span>
+      <span>🚀 Tech Fest 2025 coming soon!</span>
+      <span>🎓 Placement Drive for Final Year.</span>
+      <span>📌 Spot Round Counselling: M.Pharmacy</span>
+      <span>📌 Academic Calendar Session 2025–26</span>
+      <span>📢 Admission Open 2025 - Apply Now!</span>
+      <span>🚀 Tech Fest 2025 coming soon!</span>
+      <span>🎓 Placement Drive for Final Year.</span>
+      <span>📌 Spot Round Counselling: M.Pharmacy</span>
+      <span>📌 Academic Calendar Session 2025–26</span>
+        </div>
+        </div>
             <div class="text-end mt-3">
               <a href="#" class="btn btn-light btn-sm">See More Notices <i class="bi bi-arrow-right"></i></a>
             </div>
@@ -280,16 +359,16 @@
             <div class="card-body">
               <h5 class="card-title">Academic Calendar 2025</h5>
               <p class="card-text">Download the detailed academic calendar for the current session 2025-2026.</p>
-              <a href="https://www.himtu.ac.in/wp-content/uploads/2025/08/220825-AC-2025-26.pdf" class="btn btn-outline-primary btn-sm">Download PDF</a>
+              <a href="https://www.himtu.ac.in/wp-content/uploads/2025/06/300625-academic-calendar-2025-26.pdf" class="btn btn-outline-primary btn-sm">Download PDF</a>
             </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="card h-100 h-card">
             <div class="card-body">
-              <h5 class="card-title">Hostel Allotment Phase </h5>
-              <p class="card-text">List of students allotted rooms in this Phase, Prior to this notice be present in hostel for Verification.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">View List</a>
+              <h5 class="card-title">B-TECH Result out </h5>
+              <p class="card-text">Login to university portal to view and Download your result</p>
+              <a href="https://hptuexam.com/user/user/dashboard" class="btn btn-outline-primary btn-sm">View Result</a>
             </div>
           </div>
         </div>
@@ -383,6 +462,8 @@
           We aim to nurture talent, encourage research, and provide world-class opportunities for our students.
           Our College is more than just a building—it's a vibrant community where students are supported, challenged, and celebrated. 
          </p>
+          <h6 class="mt-2 text-bg-success d-inline-block px-2 py-1">Dr Arjun Kumar</h6>
+
         </div>
       </div>
     </div>
@@ -471,6 +552,45 @@
     </div>
   </section>
 
+   <!-- ALUMNI (NEW) -->
+  <section id="alumni" class="py-4 bg-light-subtle">
+    <div class="container">
+      <h2 class="section-title mb-3" style="text-align: center;">Alumni Spotlight</h2>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="alumni-card glass p-4 d-flex gap-3 align-items-center">
+            <img src="portal/Aditya-Alumni.jpeg" alt="Alumni 1">
+            <div>
+              <strong>Aditya Nanda</strong>
+              <div class="small-muted">Batch 2027 — Software Engineer, NexSemi</div>
+              <p class="small mt-2 mb-0">"HIET gave me the practical skills and confidence to step into the industry."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="alumni-card glass p-4 d-flex gap-3 align-items-center">
+            <img src="portal/Parul-Alumni.jpeg" alt="Alumni 2">
+            <div>
+              <strong>Parul Rathore</strong>
+              <div class="small-muted">Batch 2025 — Project Manager, NexSemi</div>
+              <p class="small mt-2 mb-0">"The mentors and projects shaped my approach to problem solving."</p>
+            </div>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="alumni-card glass p-4 d-flex gap-3 align-items-center">
+            <img src="portal/Aksht-Alumni.jpeg" alt="Alumni 2">
+            <div>
+              <strong>Aksht Rana</strong>
+              <div class="small-muted">Batch 2027 — Project Manager, NexSemi</div>
+              <p class="small mt-2 mb-0">"The mentors and projects shaped my approach to problem solving."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- APPROVALS -->
   <section id="approvals" class="text-center">
     <div class="container glass p-3 p-md-4">
@@ -514,26 +634,50 @@
     </div>
   </section>
       
-
-  <!-- GALLERY -->
-  <section id="gallery" class="bg-light-subtle">
+  
+   <!-- GALLERY (CAROUSEL + THUMBS) -->
+  <section id="gallery" class="py-4">
     <div class="container">
-      <h2 class="section-title mb-4">Campus Gallery</h2>
-      <div class="row g-3 gallery">
-        <!-- Replace with your real images; using placeholders per your original pattern -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <img src="portal/Indrahar-1 (25).webp" alt="Campus 1" data-bs-toggle="modal" data-bs-target="#lightbox" data-src="https://source.unsplash.com/1200x800/?campus,1">
+      <h2 class="section-title mb-3">Campus Gallery</h2>
+
+      <!-- Bootstrap carousel -->
+      <div id="galleryCarousel" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="portal/Indrahar-1 (25).webp" class="d-block w-100" alt="Campus 1">
+          </div>
+          <div class="carousel-item">
+            <img src="portal/Indrahar 2 (25).jpg" class="d-block w-100" alt="Campus 2">
+          </div>
+          <div class="carousel-item">
+            <img src="portal/MOU-LT 3 (25)" class="d-block w-100" alt="Campus 3">
+          </div>
+          <div class="carousel-item">
+            <img src="portal/MD-Dushyant Kayastha 4 (24).jpg" class="d-block w-100" alt="Campus 4">
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-          <img src="portal/Indrahar 2 (25).jpg" alt="Campus 2" data-bs-toggle="modal" data-bs-target="#lightbox" data-src="https://source.unsplash.com/1200x800/?campus,2">
-        </div>
-        <div class="col-6 col-md-4 col-lg-3">
-          <img src="portal/MOU-LT 3 (25)" alt="Campus 3" data-bs-toggle="modal" data-bs-target="#lightbox" data-src="https://source.unsplash.com/1200x800/?campus,3">
-        </div>
-        <div class="col-6 col-md-4 col-lg-3">
-          <img src="portal/MD-Dushyant Kayastha 4 (24).jpg" alt="Campus 4" data-bs-toggle="modal" data-bs-target="#lightbox" data-src="https://source.unsplash.com/1200x800/?campus,4">
-        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
+
+      <!-- thumbnails (click to jump) -->
+      <div class="d-flex gallery-thumbs justify-content-center mt-3 flex-wrap">
+        <img src="portal/Indrahar-1 (25).webp" alt="thumb1" data-index="0" class="active">
+        <img src="portal/Indrahar 2 (25).jpg" alt="thumb2" data-index="1">
+        <img src="portal/MOU-LT 3 (25)" alt="thumb3" data-index="2">
+        <img src="portal/MD-Dushyant Kayastha 4 (24).jpg" alt="thumb4" data-index="3">
+      </div>
+
+      <div class="text-center mt-3 small text-muted">Use the arrows or thumbnails to move the gallery.</div>
+       
+      <!--Add more images by inserting new <code>.carousel-item</code> entries and corresponding thumbnails.-->
     </div>
   </section>
 
@@ -632,6 +776,65 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="pscript.js"></script>
+<script>
+    // GALLERY: wire thumbnails to carousel
+    (function(){
+      const carouselEl = document.getElementById('galleryCarousel');
+      if(!carouselEl) return;
+      const carousel = new bootstrap.Carousel(carouselEl, { interval:false, ride:false });
+      const thumbs = Array.from(document.querySelectorAll('.gallery-thumbs img'));
+      thumbs.forEach((t, i)=>{
+        t.addEventListener('click', ()=>{
+          carousel.to(i);
+          thumbs.forEach(x=> x.classList.remove('active'));
+          t.classList.add('active');
+        });
+      });
+
+      // keep active thumbnail in sync with carousel slide change
+      carouselEl.addEventListener('slid.bs.carousel', function(e){
+        const idx = e.to;
+        thumbs.forEach(x=> x.classList.remove('active'));
+        if(thumbs[idx]) thumbs[idx].classList.add('active');
+      });
+
+      // Lightbox: open modal on clicking main carousel image
+      const lightboxModal = new bootstrap.Modal(document.createElement('div'));
+      // Instead of creating a full modal here (you already had one), we'll just re-use the bootstrap modal if present
+      const existingModal = document.getElementById('lightbox');
+      if(existingModal){
+        const lbImg = document.getElementById('lightboxImg');
+        document.querySelectorAll('#galleryCarousel .carousel-item img').forEach(img=>{
+          img.style.cursor = 'pointer';
+          img.addEventListener('click', ()=>{
+            if(lbImg) lbImg.src = img.src;
+            const modal = new bootstrap.Modal(existingModal);
+            modal.show();
+          });
+        });
+      }
+    })();
+
+    // small helper: update stat counters if desired (kept simple)
+    (function(){
+      document.querySelectorAll('.stat').forEach(el=>{
+        const target = parseInt(el.getAttribute('data-count')||el.textContent.trim()) || 0;
+        el.textContent = target;
+      });
+    })();
+    // Simple scroll reveal effect
+    const elements = document.querySelectorAll('[data-aos]');
+    const revealOnScroll = () => {
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('aos-animate');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
 </body>
 </html>
 

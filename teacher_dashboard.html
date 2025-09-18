@@ -1,83 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teacher Dashboard | CampusConnect-HIET</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teacher Dashboard | CampusConnect-HIET</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body.dashboard-body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  color: #fff;
+  background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
+  background-size: 600% 600%;
+  animation: gradientBG 35s ease infinite;
+  display: flex;
+  flex-direction: column;
+}
+@keyframes gradientBG {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+/* Glass cards */
+.glass-card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+/* Navbar */
+.glass-nav {
+  background: rgba(255,255,255,0.12) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+.navbar-brand {font-weight: bold; letter-spacing: 1px;}
+
+/* Notifications ticker */
+.ticker-container {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  margin: 0 auto 30px auto;
+}
+.ticker {display: flex; flex-direction: column; animation: scrollUp 25s linear infinite;}
+.ticker-item {display: flex; align-items: center; font-weight: bold; font-size: 17px; color: #fff; padding: 10px 0;}
+.live-dot {width: 10px; height: 10px; background: #ff4b2b; border-radius: 50%; margin-right: 10px; animation: blink 1s infinite;}
+@keyframes scrollUp {0%{transform:translateY(100%);}100%{transform:translateY(-100%);}}
+@keyframes blink {0%,50%,100%{opacity:1;}25%,75%{opacity:0;}}
+
+/* Table styling */
+.glass-table {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+.glass-table th {
+  background: rgba(0,0,0,0.7);
+  color: #fff !important; /* fully white text */
+  font-weight: 600;
+}
+.glass-table td {
+  color: #fff !important; /* fully white text */
+  vertical-align: middle;
+}
+/* Inputs inside table */
+.glass-table td input {
+  background-color: #fff !important; /* solid white */
+  color: #000 !important;           /* solid black */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.35);
+  border-radius: 12px;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+</style>
 </head>
 <body class="dashboard-body">
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-  <a class="navbar-brand fw-bold" href="#">CampusConnect-HIET</a>
-  <div class="ms-auto">
-    <button class="btn btn-danger btn-sm" onclick="logout()">Logout</button>
+<nav class="navbar navbar-expand-lg navbar-dark glass-nav px-3">
+  <a class="navbar-brand d-flex align-items-center" href="#">
+    <img src="hietlogo.png" alt="Logo" width="40" height="40" class="me-2 rounded-circle border border-light">
+    CampusConnect-HIET
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto align-items-center">
+      <li class="nav-item"><a class="nav-link active" href="#notifications">🔔 Notifications</a></li>
+      <li class="nav-item"><a class="nav-link" href="#students">📋 Students</a></li>
+      <li class="nav-item ms-3"><button class="btn btn-light btn-sm fw-bold shadow-sm" onclick="logout()">Logout</button></li>
+    </ul>
   </div>
 </nav>
 
-<div class="container my-4">
-  <h2 class="fw-bold mb-3">👨‍🏫 Welcome, Teacher!</h2>
+<div class="container py-5">
+
+  <!-- Welcome Banner -->
+  <div class="glass-card p-4 mb-5 text-center">
+    <h2 class="fw-bold">👨‍🏫 Welcome, Teacher!</h2>
+    <p class="text-white">Your teaching journey continues here 🚀</p>
+  </div>
 
   <!-- Notifications -->
-  <div class="mb-4">
-    <h4 class="mb-3">🔔 Teacher Notifications</h4>
-    <div class="card p-3 shadow-sm mb-2">
-      <h6 class="fw-bold">Staff Meeting</h6>
-      <p class="mb-0">All faculty meeting at 11 AM on 30th August in Seminar Hall.</p>
-    </div>
-    <div class="card p-3 shadow-sm">
-      <h6 class="fw-bold">Internal Marks Upload</h6>
-      <p class="mb-0">Deadline to update marks is 3rd September.</p>
-    </div>
-  </div>
+  <section id="notifications" class="mb-5 text-center">
+    <h3 class="fw-bold text-white">🔔 Teacher Notifications</h3>
+    <div class="ticker-container"><div class="ticker" id="teacherTicker"></div></div>
+  </section>
 
-  <!-- Attendance Update -->
-  <div class="mb-4">
-    <h4 class="mb-3">✅ Update Attendance</h4>
-    <form class="row g-3">
-      <div class="col-md-6">
-        <input type="text" class="form-control" placeholder="Student Reg. No">
-      </div>
-      <div class="col-md-6">
-        <select class="form-select">
-          <option>Present</option>
-          <option>Absent</option>
-        </select>
-      </div>
-      <div class="col-12">
-        <button type="button" class="btn btn-primary">Update</button>
-      </div>
-    </form>
-  </div>
-
-  <!-- Gallery -->
-  <div class="mb-4">
-    <h4 class="mb-3">📸 Campus Gallery</h4>
-    <div class="row g-3">
-      <div class="col-6 col-md-3">
-        <img src="https://picsum.photos/400/300?random=4" class="img-fluid rounded shadow-sm" alt="Campus photo">
-      </div>
-      <div class="col-6 col-md-3">
-        <img src="https://picsum.photos/400/300?random=5" class="img-fluid rounded shadow-sm" alt="Campus photo">
-      </div>
-      <div class="col-6 col-md-3">
-        <img src="https://picsum.photos/400/300?random=6" class="img-fluid rounded shadow-sm" alt="Campus photo">
-      </div>
-      <div class="col-6 col-md-3">
-        <img src="https://picsum.photos/400/300?random=7" class="img-fluid rounded shadow-sm" alt="Campus photo">
-      </div>
+  <!-- Student Management -->
+  <section id="students" class="mb-5">
+    <h3 class="fw-bold text-white">📋 Manage Students</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover text-center glass-table mb-0" style="min-width:700px;">
+        <thead>
+          <tr>
+            <th>Reg. No</th>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Year</th>
+            <th>Attendance (%)</th>
+            <th>Marks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="studentTableBody"></tbody>
+      </table>
     </div>
-  </div>
+  </section>
+
 </div>
 
-<script src="main.js"></script>
+<!-- Footer -->
+<footer>
+  © 2025 CampusConnect-HIET | "A good teacher inspires hope, ignites imagination, and instills a love for learning." ✨
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-function logout() {
-  alert("Logged out!");
-  window.location.href = "index.html";
+// Teacher notifications
+const teacherNotifications = [
+  {msg:"Staff Meeting at 11 AM on 30th August in Seminar Hall."},
+  {msg:"Internal Marks Upload deadline is 3rd September."},
+  {msg:"New syllabus review meeting scheduled next week."},
+  {msg:"Workshop on AI for faculty on 10th October."}
+];
+const ticker=document.getElementById("teacherTicker");
+teacherNotifications.forEach(n=>{
+  const div=document.createElement("div");
+  div.classList.add("ticker-item");
+  div.innerHTML=`<span class="live-dot"></span> ${n.msg}`;
+  ticker.appendChild(div);
+});
+
+// Dummy students data
+if(!localStorage.getItem('students')){
+  const demoStudents=[
+    {regNo:'202501', name:'Rahul Sharma', branch:'CSE', year:'2nd', attendance:92, marks:85},
+    {regNo:'202502', name:'Simran Rana', branch:'CSE', year:'3rd', attendance:88, marks:90},
+    {regNo:'202503', name:'Priya Verma', branch:'ECE', year:'1st', attendance:95, marks:78}
+  ];
+  localStorage.setItem('students', JSON.stringify(demoStudents));
 }
+
+// Render table
+function renderStudents(){
+  const students=JSON.parse(localStorage.getItem('students'));
+  const tbody=document.getElementById('studentTableBody');
+  tbody.innerHTML='';
+  students.forEach((stu,index)=>{
+    tbody.innerHTML=tbody.innerHTML+`
+      <tr>
+        <td>${stu.regNo}</td>
+        <td>${stu.name}</td>
+        <td>${stu.branch}</td>
+        <td>${stu.year}</td>
+        <td><input type="number" value="${stu.attendance}" id="att-${index}"></td>
+        <td><input type="number" value="${stu.marks}" id="marks-${index}"></td>
+        <td><button class="btn btn-success btn-sm" onclick="saveStudent(${index})">💾 Save</button></td>
+      </tr>
+    `;
+  });
+}
+
+function saveStudent(index){
+  let students=JSON.parse(localStorage.getItem('students'));
+  students[index].attendance=parseInt(document.getElementById(`att-${index}`).value)||0;
+  students[index].marks=parseInt(document.getElementById(`marks-${index}`).value)||0;
+  localStorage.setItem('students', JSON.stringify(students));
+  alert('✅ Student data updated!');
+  renderStudents();
+}
+
+function logout(){
+  alert('Logged out!');
+  window.location.href='index.html';
+}
+
+// Initialize
+renderStudents();
 </script>
+
 </body>
 </html>
