@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teacher Dashboard | CampusConnect-HIET</title>
+  <title>Student Dashboard | CampusConnect-HIET</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -16,8 +16,6 @@
       background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
       background-size: 600% 600%;
       animation: gradientBG 35s ease infinite;
-      display: flex;
-      flex-direction: column;
     }
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
@@ -45,22 +43,27 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 2px 6px rgba(0,0,0,0.25);
     }
-    .navbar-brand {
-      font-weight: bold;
-      letter-spacing: 1px;
+
+    /* Profile picture */
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #fff;
     }
 
-    /* Gradient text */
-    .text-gradient-blue {background: linear-gradient(to right,#36d1dc,#5b86e5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .text-gradient-pink {background: linear-gradient(to right,#f953c6,#b91d73);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    /* Text gradient styles */
+    .text-gradient {background: linear-gradient(to right,#ff416c,#ff4b2b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
     .text-gradient-green {background: linear-gradient(to right,#11998e,#38ef7d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .text-gradient-pink {background: linear-gradient(to right,#f953c6,#b91d73);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .text-gradient-blue {background: linear-gradient(to right,#36d1dc,#5b86e5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 
     /* Notifications ticker */
     .ticker-container {
       position: relative;
       width: 100%;
       max-width: 850px;
-      height: 200px;
+      height: 250px;
       overflow: hidden;
       border-radius: 16px;
       background: rgba(255,255,255,0.2);
@@ -68,34 +71,22 @@
       padding: 20px;
       margin: 0 auto 30px auto;
     }
-    .ticker {display: flex; flex-direction: column; animation: scrollUp 25s linear infinite;}
-    .ticker-item {display: flex; align-items: center; font-weight: bold; font-size: 17px; color: #fff; padding: 10px 0;}
-    .live-dot {width: 10px; height: 10px; background: #ff4b2b; border-radius: 50%; margin-right: 10px; animation: blink 1s infinite;}
+    .ticker {display: flex; flex-direction: column; animation: scrollUp 30s linear infinite;}
+    .ticker-item {display: flex; align-items: center; font-weight: bold; font-size: 18px; color: #fff; padding: 12px 0;}
+    .live-dot {width: 12px; height: 12px; background: red; border-radius: 50%; margin-right: 10px; animation: blink 1s infinite;}
     @keyframes scrollUp {0%{transform:translateY(100%);}100%{transform:translateY(-100%);}}
     @keyframes blink {0%,50%,100%{opacity:1;}25%,75%{opacity:0;}}
 
-    /* Table styling */
-    .glass-table {
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .glass-table th {
-      background: rgba(0,0,0,0.5) !important;
-      color: #fff;
-    }
-    .glass-table td, .glass-table th {
-      vertical-align: middle;
-      color: #fff;
-    }
+    /* Video container */
+    .video-container {position: relative;width: 100%;padding-bottom: 56.25%;overflow: hidden;border-radius: 12px;}
+    .video-container iframe {position: absolute;top:0;left:0;width:100%;height:100%;}
 
     footer {
       text-align: center;
       padding: 15px;
       background: rgba(0,0,0,0.35);
       border-radius: 12px;
-      margin-top: auto;
+      margin-top: 30px;
       font-size: 0.9rem;
     }
   </style>
@@ -104,7 +95,7 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark glass-nav px-3">
-  <a class="navbar-brand d-flex align-items-center" href="#">
+  <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
     <img src="hietlogo.png" alt="Logo" width="40" height="40" class="me-2 rounded-circle border border-light">
     CampusConnect-HIET
   </a>
@@ -113,10 +104,11 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto align-items-center">
-      <li class="nav-item"><a class="nav-link active" href="#notifications">🔔 Notifications</a></li>
-      <li class="nav-item"><a class="nav-link" href="#students">📋 Students</a></li>
-      <li class="nav-item"><a class="nav-link" href="#profile">👤 Profile</a></li>
-      <li class="nav-item ms-3"><button class="btn btn-light btn-sm fw-bold shadow-sm" onclick="logout()">Logout</button></li>
+      <li class="nav-item"><a class="nav-link active" href="#attendance">📅 Attendance</a></li>
+      <li class="nav-item"><a class="nav-link" href="#fees">💰 Fees</a></li>
+      <li class="nav-item"><a class="nav-link" href="#lectures">🎥 Lectures</a></li>
+      <li class="nav-item"><a class="nav-link" href="#courses">📚 Courses</a></li>
+      <li class="nav-item ms-3"><a class="btn btn-light btn-sm fw-bold shadow-sm" href="index.html">Logout</a></li>
     </ul>
   </div>
 </nav>
@@ -125,34 +117,104 @@
 
   <!-- Welcome Banner -->
   <div class="glass-card p-4 mb-5 text-center">
-    <h2 class="fw-bold">👨‍🏫 Welcome, Teacher!</h2>
-    <p class="text-muted">Your teaching journey continues here 🚀</p>
+    <h2 class="fw-bold">👋 Welcome Back, Student!</h2>
+    <p class="text-muted">Your academic journey at <b>HIET</b> continues here 🚀</p>
   </div>
 
-  <!-- Notifications -->
-  <section id="notifications" class="mb-5 text-center">
-    <h3 class="fw-bold text-gradient-pink">🔔 Teacher Notifications</h3>
-    <div class="ticker-container"><div class="ticker" id="teacherTicker"></div></div>
+  <!-- Student Profile -->
+  <section id="studentProfileArea" class="mb-4">
+    <div class="glass-card p-4 d-flex align-items-center flex-wrap">
+      <img src="https://cdn-icons-png.flaticon.com/512/201/201818.png" alt="Student Avatar" class="profile-pic me-4 mb-3 mb-md-0">
+      <div>
+        <h4 class="fw-bold mb-1" id="studentName">👨‍🎓 …</h4>
+        <p class="mb-1"><b>Reg. No:</b> <span id="studentRegNo"></span></p>
+        <p class="mb-1"><b>Branch:</b> <span id="studentBranch"></span></p>
+        <p class="mb-1"><b>Year:</b> <span id="studentYear"></span></p>
+        <p class="mb-0"><b>Email:</b> <span id="studentEmail"></span></p>
+      </div>
+    </div>
   </section>
 
-  <!-- Student Management -->
-  <section id="students" class="mb-5">
-    <h3 class="fw-bold text-gradient-blue">📋 Manage Students</h3>
-    <div class="table-responsive glass-table">
-      <table class="table table-bordered table-hover text-center mb-0">
-        <thead>
-          <tr>
-            <th>Reg. No</th>
-            <th>Name</th>
-            <th>Branch</th>
-            <th>Year</th>
-            <th>Attendance (%)</th>
-            <th>Marks</th>
-            <th>Action</th>
-          </tr>
+  <!-- Live Notifications -->
+  <section id="liveNotifications" class="mb-5 text-center">
+    <h3 class="fw-bold text-gradient">🔔 Live Notifications</h3>
+    <div class="ticker-container"><div class="ticker" id="attendanceTicker"></div></div>
+  </section>
+
+  <!-- Attendance -->
+  <section id="attendance" class="mb-5">
+    <h3 class="fw-bold text-gradient-blue">📅 Attendance Overview</h3>
+    <div class="table-responsive glass-card p-3">
+      <table class="table table-bordered text-center mb-0">
+        <thead class="table-dark">
+          <tr><th>Month</th><th>Days Present</th><th>Total Days</th><th>Percentage</th></tr>
         </thead>
-        <tbody id="studentTableBody"></tbody>
+        <tbody>
+          <tr><td>January</td><td>20</td><td>22</td><td>91%</td></tr>
+          <tr><td>February</td><td>18</td><td>20</td><td>90%</td></tr>
+          <tr><td>March</td><td>21</td><td>23</td><td>95%</td></tr>
+          <tr><td>April</td><td>19</td><td>22</td><td>86%</td></tr>
+        </tbody>
       </table>
+    </div>
+  </section>
+
+  <!-- Events & Timetable -->
+  <section id="events-timetable" class="mb-5">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h3 class="fw-bold text-gradient-blue">📢 Upcoming Events</h3>
+        <div class="glass-card p-3 h-100">
+          <ul class="mb-0">
+            <li>Hackathon 2025 – 25th Sept</li>
+            <li>Convocation – 5th Oct</li>
+            <li>Workshop on Cloud Computing – 15th Oct</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      </section>
+  <section id="events-timetable" class="mb-5">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h3 class="fw-bold text-gradient-pink">📌 Today’s Timetable</h3>
+        <div class="glass-card p-3 h-100">
+          <ul class="mb-0">
+            <li>10:00 AM – Data Structures</li>
+            <li>12:00 PM – Operating Systems</li>
+            <li>2:00 PM – DBMS</li>
+            <li>4:00 PM – Web Development</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- Fees Ledger -->
+  <section id="fees" class="mb-5">
+    <h3 class="fw-bold text-gradient-green">💰 Fees Ledger</h3>
+    <div class="row g-4">
+      <div class="col-md-6"><div class="glass-card p-3"><h6 class="fw-bold">Receipt #1001</h6><p>Date: 10-Jan-2025</p><p>Amount Paid: <b>₹5,000</b></p><span class="badge bg-success">Paid</span></div></div>
+      <div class="col-md-6"><div class="glass-card p-3"><h6 class="fw-bold">Receipt #1002</h6><p>Date: 15-Apr-2025</p><p>Amount Paid: <b>₹15,000</b></p><span class="badge bg-success">Paid</span></div></div>
+    </div>
+  </section>
+
+  <!-- Recorded Lectures -->
+  <section id="lectures" class="mb-5 text-center">
+    <h3 class="fw-bold text-gradient-pink">🎥 Recorded Lectures</h3>
+    <p class="text-muted">Access lectures anytime, anywhere</p>
+    <a href="https://www.youtube.com/@GateSmashers" target="_blank" class="btn btn-light btn-lg shadow">Go to Lectures</a>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses" class="mb-5">
+    <h3 class="fw-bold text-gradient-blue">📚 Course Videos</h3>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="glass-card p-3 h-100 text-center"><h6 class="fw-bold">Data Structures</h6><p class="text-muted">Learn DS fundamentals</p><div class="video-container"><iframe src="https://www.youtube.com/embed/qNGyI95E5AE?list=PLxCzCOWd7aiEwaANNt3OqJPVIxwp2ebiT" allowfullscreen></iframe></div></div></div>
+      <div class="col-md-4"><div class="glass-card p-3 h-100 text-center"><h6 class="fw-bold">DBMS</h6><p class="text-muted">Database management systems</p><div class="video-container"><iframe src="https://www.youtube.com/embed/kBdlM6hNDAE?list=PLxCzCOWd7aiFAN6I8CuViBuCdJgiOkT2Y" allowfullscreen></iframe></div></div></div>
+      <div class="col-md-4"><div class="glass-card p-3 h-100 text-center"><h6 class="fw-bold">Operating Systems</h6><p class="text-muted">Concepts of OS</p><div class="video-container"><iframe src="https://www.youtube.com/embed/bkSWJJZNgf8?list=PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p" allowfullscreen></iframe></div></div></div>
     </div>
   </section>
 
@@ -160,75 +222,41 @@
 
 <!-- Footer -->
 <footer>
-  © 2025 CampusConnect-HIET | "A good teacher inspires hope, ignites imagination, and instills a love for learning." ✨
+  © 2025 Campus Connect-HIET | Even when you make mistakes. “Know this, you can start over each morning. ❤️
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Dummy teacher notifications
-const teacherNotifications = [
-  {msg: "Staff Meeting at 11 AM on 30th August in Seminar Hall."},
-  {msg: "Internal Marks Upload deadline is 3rd September."},
-  {msg: "New syllabus review meeting scheduled next week."},
-  {msg: "Workshop on AI for faculty on 10th October."}
-];
-
-// Render ticker
-const ticker = document.getElementById("teacherTicker");
-teacherNotifications.forEach(n => {
-  const div = document.createElement("div");
-  div.classList.add("ticker-item");
-  div.innerHTML = `<span class="live-dot"></span> ${n.msg}`;
-  ticker.appendChild(div);
-});
-
-// Dummy students data
-if (!localStorage.getItem("students")) {
-  const demoStudents = [
-    { regNo: "202501", name: "Rahul Sharma", branch: "CSE", year: "2nd", attendance: 92, marks: 85 },
-    { regNo: "202502", name: "Simran Rana", branch: "CSE", year: "3rd", attendance: 88, marks: 90 },
-    { regNo: "202503", name: "Priya Verma", branch: "ECE", year: "1st", attendance: 95, marks: 78 }
-  ];
-  localStorage.setItem("students", JSON.stringify(demoStudents));
-}
-
-function renderStudents() {
-  const students = JSON.parse(localStorage.getItem("students"));
-  const tbody = document.getElementById("studentTableBody");
-  tbody.innerHTML = "";
-
-  students.forEach((stu, index) => {
-    tbody.innerHTML += `
-      <tr>
-        <td>${stu.regNo}</td>
-        <td>${stu.name}</td>
-        <td>${stu.branch}</td>
-        <td>${stu.year}</td>
-        <td><input type="number" value="${stu.attendance}" class="form-control text-center" id="att-${index}"></td>
-        <td><input type="number" value="${stu.marks}" class="form-control text-center" id="marks-${index}"></td>
-        <td><button class="btn btn-sm btn-success" onclick="saveStudent(${index})">💾 Save</button></td>
-      </tr>
-    `;
-  });
-}
-
-function saveStudent(index) {
-  let students = JSON.parse(localStorage.getItem("students"));
-  students[index].attendance = parseInt(document.getElementById(`att-${index}`).value) || 0;
-  students[index].marks = parseInt(document.getElementById(`marks-${index}`).value) || 0;
-  localStorage.setItem("students", JSON.stringify(students));
-  alert("✅ Student data updated!");
-  renderStudents();
-}
-
-function logout() {
-  alert("Logged out!");
-  window.location.href = "index.html";
-}
-
-// Load students
-renderStudents();
+  // Student info + notifications
+  window.onload = function () {
+    let user = JSON.parse(localStorage.getItem("currentUser"));
+    if (!user || user.role !== "student") {
+      alert("No student logged in. Please login first.");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("studentName").innerText = user.name;
+      document.getElementById("studentRegNo").innerText = user.regNo;
+      document.getElementById("studentBranch").innerText = user.branch;
+      document.getElementById("studentYear").innerText = user.year;
+      document.getElementById("studentEmail").innerText = user.email || "N/A";
+      const notifications = user.notifications && user.notifications.length > 0 ? user.notifications : [
+        {msg: "New assignment Given for DS."},
+        {msg: "Fee receipt #1003 is available."},
+        {msg: "Freshers Party is on 23rd"},
+        {msg: "Submit Fees To Avoid fine"},
+        {msg: "DBMS quiz scheduled tomorrow."},
+        {msg: "Missed Operating Systems lecture."}
+      ];
+      const ticker = document.getElementById("attendanceTicker");
+      ticker.innerHTML = "";
+      notifications.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("ticker-item");
+        div.innerHTML = `<span class="live-dot"></span> ${item.msg}`;
+        ticker.appendChild(div);
+      });
+    }
+  }
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
